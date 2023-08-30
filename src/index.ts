@@ -1,8 +1,7 @@
 export function helloWorld() {
-    const message = 'Hello World from my example modern npm package!';
-    return message;
+    return "Hello World from my example modern npm package!";
 }
 
 export default {
-    helloWorld
+    helloWorld,
 };
