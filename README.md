@@ -18,7 +18,7 @@ install package
 
 ### CI/CD
 
-<img src="https://github.com/kavishkamk/hotel-reservation-alpha/edit/main/assets/NPM_Deployment.png" alt="CI/CD diagram" title="CI/CD Diagram">
+<img src="https://github.com/Pro-Mentor/shared-lib/blob/main/assets/NPM_Deployment.png" alt="CI/CD diagram" title="CI/CD Diagram">
 
 ### content
 
