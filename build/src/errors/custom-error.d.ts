@@ -1,5 +1,4 @@
 import { ErrorCode } from "./error-codes";
-
 /**
  * this is a custom error class
  * it is used to create custom errors
@@ -20,19 +19,14 @@ import { ErrorCode } from "./error-codes";
  *    }
  * }
  */
-abstract class CustomError extends Error {
+declare abstract class CustomError extends Error {
     abstract statusCode: number;
-
     abstract errorCode: ErrorCode;
-
-    constructor(message: string) {
-        super(message);
-        Object.setPrototypeOf(this, CustomError.prototype);
-    }
-
-    abstract serializeErrors(): { message: string; field?: string }[];
+    constructor(message: string);
+    abstract serializeErrors(): {
+        message: string;
+        field?: string;
+    }[];
 }
-
-export {
-    CustomError
-};
+export { CustomError };
+//# sourceMappingURL=custom-error.d.ts.map

@@ -1,5 +1,6 @@
-import { ErrorCode } from "./error-codes";
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CustomError = void 0;
 /**
  * this is a custom error class
  * it is used to create custom errors
@@ -20,19 +21,10 @@ import { ErrorCode } from "./error-codes";
  *    }
  * }
  */
-abstract class CustomError extends Error {
-    abstract statusCode: number;
-
-    abstract errorCode: ErrorCode;
-
-    constructor(message: string) {
+class CustomError extends Error {
+    constructor(message) {
         super(message);
         Object.setPrototypeOf(this, CustomError.prototype);
     }
-
-    abstract serializeErrors(): { message: string; field?: string }[];
 }
-
-export {
-    CustomError
-};
+exports.CustomError = CustomError;

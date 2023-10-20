@@ -1,5 +1,5 @@
-import CustomError from "../custom-error";
-import ErrorCode from "../error-codes";
+import { CustomError } from "../custom-error";
+import { ErrorCode } from "../error-codes";
 
 /**
  * this is a custom error class for route not found exception
@@ -22,4 +22,6 @@ class RouteNotFoundException extends CustomError {
     }
 }
 
-export default RouteNotFoundException;
+export {
+    RouteNotFoundException
+};

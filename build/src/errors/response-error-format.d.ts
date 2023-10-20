@@ -1,5 +1,4 @@
 import { ErrorCode } from "./error-codes";
-
 /**
  * this is a response error format class
  * it is used to send a proper response to the client
@@ -8,13 +7,16 @@ import { ErrorCode } from "./error-codes";
  * @example
  * const errorResponse = new ResponseErrorFormat([{ message: "error message" }], ErrorCode.INTERNAL_SERVER_ERROR);
  */
-class ResponseErrorFormat {
-    constructor(
-        public errors: { message: string; field?: string }[],
-        public errorCode: ErrorCode
-    ) {}
+declare class ResponseErrorFormat {
+    errors: {
+        message: string;
+        field?: string;
+    }[];
+    errorCode: ErrorCode;
+    constructor(errors: {
+        message: string;
+        field?: string;
+    }[], errorCode: ErrorCode);
 }
-
-export {
-    ResponseErrorFormat
-};
+export { ResponseErrorFormat };
+//# sourceMappingURL=response-error-format.d.ts.map
