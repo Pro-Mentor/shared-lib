@@ -19,6 +19,6 @@ jobs:
                   node-version: 16
                   registry-url: https://registry.npmjs.org
             - name: Publish Package
-              run: npm set-script prepare '' && npm publish --access public
+              run: npm set-script prepare '' && npm run build && npm publish --access public
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
