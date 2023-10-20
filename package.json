@@ -9,7 +9,8 @@
     ],
     "scripts": {
         "clean": "del-cli ./build/*",
-        "build": "npm run clean && tsc",
+        "dev-build": "npm run clean && tsc",
+        "build": "tsc",
         "test": "mocha",
         "lint": "eslint . --max-warnings 0 --report-unused-disable-directives",
         "prepare": "husky install",
