@@ -1,6 +1,4 @@
 import { NextFunction, Request, Response } from "express";
-import {RouteNotFoundException} from "../errors/custom_exceptions/route-not-found-exception";
-
 /**
  * this is a middleware to handle unhandled routes
  * it will throw a RouteNotFoundException
@@ -11,8 +9,6 @@ import {RouteNotFoundException} from "../errors/custom_exceptions/route-not-foun
  * @example
  * app.use(unhandledRouteMiddleware);
  */
-const unhandledRouteMiddleware = (req: Request, res: Response, next: NextFunction) => {
-    return next(new RouteNotFoundException());
-};
-
+declare const unhandledRouteMiddleware: (req: Request, res: Response, next: NextFunction) => void;
 export { unhandledRouteMiddleware };
+//# sourceMappingURL=unhandled-route-middleware.d.ts.map

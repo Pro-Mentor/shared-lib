@@ -1,0 +1,1 @@
+{"version":3,"file":"unhandled-route-middleware.d.ts","sourceRoot":"","sources":["../../../src/middleware/unhandled-route-middleware.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,YAAY,EAAE,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAC;AAG1D;;;;;;;;;GASG;AACH,QAAA,MAAM,wBAAwB,QAAS,OAAO,OAAO,QAAQ,QAAQ,YAAY,SAEhF,CAAC;AAEF,OAAO,EAAE,wBAAwB,EAAE,CAAC"}
