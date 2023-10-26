@@ -21,7 +21,6 @@ class AxiosException extends CustomError {
         Object.setPrototypeOf(this, AxiosException.prototype);
     }
 
-    // eslint-disable-next-line class-methods-use-this
     public serializeErrors(): { message: string; field?: string }[] {
         return [{ message: this.message }];
     }
