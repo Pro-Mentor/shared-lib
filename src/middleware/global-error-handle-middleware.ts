@@ -27,8 +27,8 @@ const globalErrorHandleMiddleware = (err: Error, req: Request, res: Response, ne
     // if the error is an instance of CustomError, it means that it is a known error
     // so we can send a proper response to the client
     if (err instanceof CustomError) {
-        console.debug("Error caught in global error handler: ", err);
         errorResponse = { errors: err.serializeErrors(), errorCode: err.errorCode };
+        console.error("Error caught in global error handler: ", errorResponse);
         return res.status(err.statusCode).json(errorResponse);
     }
 
@@ -37,7 +37,7 @@ const globalErrorHandleMiddleware = (err: Error, req: Request, res: Response, ne
         errorCode: ErrorCode.INTERNAL_SERVER_ERROR,
     };
 
-    console.error("Error caught in global error handler: ", errorResponse);
+    console.error("Unhandled Error caught in global error handler: ", err);
 
     return res.status(500).json(errorResponse);
 };
