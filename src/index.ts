@@ -28,3 +28,12 @@ export * from "./errors/custom_exceptions/axios-exception";
  */
 export * from "./util/url-handler";
 
+/**
+ * proxy
+ */
+export * from "./proxy/invoke-rest-endpoint";
+export * from "./proxy/request_formats/request-format";
+export * from "./proxy/request_formats/http-headers";
+export * from "./proxy/request_formats/http-methods";
+export * from "./proxy/request_formats/response-format";
+
