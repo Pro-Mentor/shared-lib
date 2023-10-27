@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import {RouteNotFoundException} from "../errors/custom_exceptions/route-not-found-exception";
+
+import { RouteNotFoundException } from "../errors/custom_exceptions/route-not-found-exception";
 
 /**
  * this is a middleware to handle unhandled routes
