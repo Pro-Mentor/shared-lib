@@ -3,10 +3,11 @@ import { NextFunction, Request, Response } from "express";
 
 import { getKeycloakIdpUrl, getTenantIdFromURL } from "../util/url-handler";
 
-import { InvalidURLException } from "../errors/custom_exceptions/invalid-url-exception";
-import {UnauthorizeAccessException} from "../errors/custom_exceptions/unauthorize-access-exception";
-import {invokeKeyclockAuthorizationEndpoint} from "../service/rest_api/keycloak-rest-service";
+import { invokeKeyclockAuthorizationEndpoint } from "../service/rest_api/keycloak-rest-service";
 import { KeycloakAuthrorizationResponse } from "../proxy/request_formats/response-format";
+
+import { InvalidURLException } from "../errors/custom_exceptions/invalid-url-exception";
+import { UnauthorizeAccessException } from "../errors/custom_exceptions/unauthorize-access-exception";
 
 /**
  * this is for add the currentUser property to the request object
