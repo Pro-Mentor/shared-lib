@@ -6,6 +6,7 @@ export * from "./middleware/unhandled-route-middleware";
 export * from "./middleware/require-auth-middleware";
 export * from "./middleware/keycloak-auth-middleware";
 export * from "./middleware/require-roles-middleware";
+export * from "./middleware/request-validation-middleware";
 
 /**
  * error classes
@@ -26,6 +27,7 @@ export * from "./errors/custom_exceptions/unauthorize-access-exception";
 export * from "./errors/custom_exceptions/invalid-url-exception";
 export * from "./errors/custom_exceptions/axios-exception";
 export * from "./errors/custom_exceptions/email-not-verified";
+export * from "./errors/custom_exceptions/requrest-validation-error";
 
 /**
  * util
