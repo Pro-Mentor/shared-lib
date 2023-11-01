@@ -36,8 +36,15 @@ declare global {
  * @throws Error if the keyclock authorization endpoint returns an error if the error is not an AxiosError
  */
 const keycloakAuthMiddleware = async (req: Request, res: Response, next: NextFunction) => {
-    const keyTenant = getTenantIdFromURL(req.headers.origin as string);
-    const keyclockIdpServerUrl = getKeycloakIdpUrl(req.headers.origin as string);
+    let keyTenant;
+    let keyclockIdpServerUrl;
+
+    try {
+        keyTenant = getTenantIdFromURL(req.headers.origin as string);
+        keyclockIdpServerUrl = getKeycloakIdpUrl(req.headers.origin as string);
+    } catch (error) {
+        return next(error);
+    }
 
     console.log(`reserved request to tenant: ${keyTenant}, redirecting to idpServer: ${keyclockIdpServerUrl}`);
 
