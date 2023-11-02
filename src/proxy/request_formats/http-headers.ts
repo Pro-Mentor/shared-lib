@@ -19,6 +19,7 @@ type HttpContentType =
  */
 type HttpRequestHeaders = {
     "Content-Type": HttpContentType;
+    Authorization?: string;
 };
 
 export { HttpRequestHeaders, HttpContentType };
