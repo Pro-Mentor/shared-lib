@@ -39,7 +39,7 @@ const invokeRestEndpoint = async <T extends ResponseBodyFormat>(
         console.debug("error ", error);
         if (axios.isAxiosError(error)) {
             throw new AxiosException(
-                error.response?.data.error,
+                error.response?.data.errorMessage || error.response?.data.error,
                 ErrorCode[error.code as keyof typeof ErrorCode],
                 error.response?.status || 500
             );
