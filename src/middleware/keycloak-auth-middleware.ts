@@ -75,7 +75,7 @@ const keycloakAuthMiddleware = async (req: Request, res: Response, next: NextFun
             keyTenant,
             tenatSecret,
             authorization,
-            process.env.KEYCLOK_CLIENT_ID as string
+            process.env.KEYCLOAK_CLIENT_ID as string
         );
     } catch (error) {
         console.error(`Error while invoking the keycloak authorization endpoint`);
