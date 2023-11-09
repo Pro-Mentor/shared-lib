@@ -28,6 +28,7 @@ export * from "./errors/custom_exceptions/invalid-url-exception";
 export * from "./errors/custom_exceptions/axios-exception";
 export * from "./errors/custom_exceptions/email-not-verified";
 export * from "./errors/custom_exceptions/requrest-validation-error";
+export * from "./errors/custom_exceptions/custom-exception";
 
 /**
  * util
