@@ -22,7 +22,11 @@
         "sourceType": "module",
         "project": "./tsconfig.json"
     },
-    "plugins": ["@typescript-eslint", "prettier", "import"],
+    "plugins": [
+        "@typescript-eslint",
+        "prettier",
+        "import"
+    ],
     "rules": {
         "import/extensions": "off",
         "no-console": "off",
@@ -32,6 +36,12 @@
             "off",
             {
                 "endOfLine": "auto"
+            }
+        ],
+        "no-underscore-dangle": [
+            "error",
+            {
+                "allowAfterThis": true
             }
         ]
     }
