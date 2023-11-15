@@ -29,7 +29,7 @@ it("throw error if url is not valid", () => {
 it("retrive the idp url form valid url", () => {
     const url1 = "http://tenant1.app.promentor.local:3000";
     const idpUrl1 = getKeycloakIdpUrl(url1);
-    expect(idpUrl1).to.equal("http://idp.promentor.local");
+    expect(idpUrl1).to.equal("http://idp.promentor.local:8080");
 
     const url2 = "http://tenant2.app.promentor.com";
     const idpUrl2 = getKeycloakIdpUrl(url2);

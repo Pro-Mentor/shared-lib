@@ -16,8 +16,8 @@ interface UserTemaparyPasswordCreatedEvent {
         email: string;
         temparyPassword: string;
         username: string;
-        firstName: string;
-        lastName: string;
+        firstName?: string;
+        lastName?: string;
     };
 }
 

@@ -38,6 +38,7 @@ const getTenantIdFromURL = (url: string): string => {
 /**
  * this is a get the keycloak idp url from the url
  * current url format: https://<tenant-id>.<domain-name>
+ * if the url is local (contains "local") the idp server port number is included in idp url
  * @param url url
  * @returns keycloak idp url as string
  * @throws InvalidURLException if the url is not in the correct format
@@ -74,7 +75,12 @@ const getKeycloakIdpUrl = (url: string): string => {
          * then add "idp" to the domain name
          * instend of the first two part of the domain (seperate by ".") applend all the rest of the domain name
          * const keycloakIdpUrl = "https://idp.promentor.com" = `${protocol}://idp.${domain.join(".")}`;
+         * if the url is local (contains "local") the idp server port number is included in idp url
+         * const keycloakIdpUrl = "http://idp.promentor.local:8080" = `${protocol}://idp.${domain.join(".")}:8080`;
         */
+       if (domainUrl.includes("local")) {
+            return `${protocol}://idp.${domain.join(".")}:8080`;
+       }
         return `${protocol}://idp.${domain.join(".")}`;
     } catch (error) {
         throw new InvalidURLException();
