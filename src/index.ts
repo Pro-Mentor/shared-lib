@@ -61,3 +61,10 @@ export * from "./events/base-listener";
 
 export * from "./events/app-events/user-tempary-password-created-event.ts";
 
+/**
+ * types
+ */
+export * from "./types/student";
+export * from "./types/lecturer";
+export * from "./types/resource-manager";
+
