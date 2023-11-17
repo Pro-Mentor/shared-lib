@@ -16,13 +16,18 @@ abstract class Publisher<T extends BaseEvent> {
     /**
      * this method is used to publish events
      * @param data the data of the event
+     * @param maxRetries the maximum number of retries to publish the event
+     * @param retryDelay the delay between retries
      * @returns the promise of void
      */
-    publish(data: T["data"]): Promise<void> {
+    publish(data: T["data"], maxRetries: number = 3, retryDelay: number = 1000): Promise<void> {
 
         return new Promise((resolve, reject) => {
-            this.channel
-                .assertExchange(this.subject, "topic", { durable: true })
+            let currentRetry = 0;
+
+            const publishAttempt = () => {
+                this.channel
+                .assertExchange(this.subject, "topic", { durable: true, autoDelete: false })
                 .then(() => {
                     console.debug("Queue available to publish: ", this.subject);
 
@@ -34,9 +39,19 @@ abstract class Publisher<T extends BaseEvent> {
                     resolve();
                 })
                 .catch((err) => {
-                    console.error("Failed to create queue: ", this.subject);
-                    reject(err);
+                    if (currentRetry < maxRetries) {
+                        console.error(`Failed to publish event to ${this.subject}. Retrying in ${retryDelay / 1000} seconds...`);
+                        currentRetry += 1;
+                        setTimeout(publishAttempt, retryDelay);
+                    } else {
+                        console.error(`Failed to publish event to ${this.subject} after ${maxRetries} retries.`);
+                        reject(err);
+                    }
                 });
+            }
+
+            publishAttempt();
+            
         });
     }
 }

@@ -36,12 +36,16 @@ abstract class Listener<T extends BaseEvent> {
             // create channel
             this._channel = await this.connection.createChannel();
 
-            // create exchange
-            await this._channel.assertExchange(this.subject, "topic", { durable: true });
+             // create queue
+             const { queue } = await this._channel.assertQueue("", {
+                exclusive: false,
+                durable: true,
+                autoDelete: false
+            });
 
-            // create queue
-            const { queue } = await this._channel.assertQueue("", {
-                exclusive: true,
+            // create exchange
+            await this._channel.assertExchange(this.subject, "topic", { 
+                durable: true
             });
 
             // bind queue to exchange
@@ -65,8 +69,15 @@ abstract class Listener<T extends BaseEvent> {
                     noAck: false,
                 }
             );
+
+            this._channel.on("close", () => {
+                console.error("Channel closed. Reconnecting...");
+                this.listen();
+            });
         } catch (error) {
             console.error("Failed to create queue: ", error);
+
+            setTimeout(() => this.listen(), 5000); // Retry after 5 seconds
         }
     }
 

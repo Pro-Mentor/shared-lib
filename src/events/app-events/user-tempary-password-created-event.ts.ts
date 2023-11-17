@@ -15,6 +15,7 @@ interface UserTemaparyPasswordCreatedEvent {
     data: {
         email: string;
         temparyPassword: string;
+        tenantId: string;
         username: string;
         firstName?: string;
         lastName?: string;
