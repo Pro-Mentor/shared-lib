@@ -30,10 +30,10 @@ class RabbitMQConnectorWrapper {
      * @returns the promise of the connection
      * @throws Error if the there is an error in connecting to rabbitmq
      */
-    connect(url: string) {
+    connect(url: string, connecionName: string) {
         return new Promise<void>((resolve, reject) => {
             amqplib
-                .connect(url)
+                .connect(url,{ clientProperties: { connection_name: connecionName}})
                 .then((conn) => {
                     this._rabbitMQconn = conn;
                     resolve();
