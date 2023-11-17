@@ -67,4 +67,6 @@ export * from "./events/app-events/user-tempary-password-created-event.ts";
 export * from "./types/student";
 export * from "./types/lecturer";
 export * from "./types/resource-manager";
+export * from "./types/user-groups";
+export * from "./types/realm-roles";
 
