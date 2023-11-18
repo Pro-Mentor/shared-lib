@@ -20,7 +20,7 @@ import { EmailNotVerfied } from "../errors/custom_exceptions/email-not-verified"
  * @throws UnauthorizeAccessException if the user is not defined
  * @throws EmailNotVerfied if the user email is not verified
  */
-const requirerolesMiddleware = (roles: string[]) => {
+const requireRolesMiddleware = (roles: string[]) => {
     return (req: Request, res: Response, next: NextFunction) => {
         const currentUser = req.currentUser as KeycloakAuthrorizationResponse;
 
@@ -58,5 +58,5 @@ const requirerolesMiddleware = (roles: string[]) => {
 };
 
 export {
-    requirerolesMiddleware
+    requireRolesMiddleware
 };
