@@ -9,6 +9,7 @@ enum RealmRoals {
     LECTURER = "lecture",
     STUDENT = "student",
     USER = "user",
+    RESOURCES_MANAGEMENT = "resources-management"
 }
 
     

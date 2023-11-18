@@ -29,6 +29,7 @@ export * from "./errors/custom_exceptions/axios-exception";
 export * from "./errors/custom_exceptions/email-not-verified";
 export * from "./errors/custom_exceptions/requrest-validation-error";
 export * from "./errors/custom_exceptions/custom-exception";
+export * from "./errors/custom_exceptions/group-not-found-exception";
 
 /**
  * util
@@ -69,4 +70,9 @@ export * from "./types/lecturer";
 export * from "./types/resource-manager";
 export * from "./types/user-groups";
 export * from "./types/realm-roles";
+export * from "./types/group";
 
+/**
+ * pg
+ */
+export * from "./pg/pg-connection-wrapper";

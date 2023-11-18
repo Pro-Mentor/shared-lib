@@ -1,3 +1,6 @@
+/**
+ * lecturer create interface
+ */
 interface LecturerCreate {
     username: string;
     email: string;

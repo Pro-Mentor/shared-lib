@@ -13,7 +13,6 @@ enum UserGroups {
     SCHOOL = "school",
 }
 
-    
 export {
     UserGroups
 };

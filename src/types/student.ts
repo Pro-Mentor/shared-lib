@@ -1,3 +1,6 @@
+/**
+ * StudentCreate interface.
+ */
 interface StudentCreate {
     username: string;
     email: string;

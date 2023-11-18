@@ -1,3 +1,6 @@
+/**
+ * resource manager create type
+ */
 interface ResourceManagerCreate {
     username: string;
     email: string;
