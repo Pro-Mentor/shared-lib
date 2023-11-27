@@ -18,6 +18,8 @@ declare global {
     namespace Express {
         interface Request {
             currentUser?: KeycloakAuthrorizationResponse;
+            keycloakTenant?: string;
+            keycloakIdpServerUrl?: string;
         }
     }
 }
@@ -102,6 +104,8 @@ const keycloakAuthMiddleware = async (req: Request, res: Response, next: NextFun
 
     // add the currentUser property to the request object
     req.currentUser = authResponse;
+    req.keycloakTenant = keyTenant;
+    req.keycloakIdpServerUrl = keyclockIdpServerUrl;
 
     next();
 };
