@@ -1,13 +1,14 @@
 /* eslint-disable consistent-return */
 import { NextFunction, Request, Response } from "express";
 
-import { getKeycloakIdpUrl, getTenantIdFromURL } from "../util/url-handler";
+import { getKeycloakIdpUrl, getTenantIdFromURL, isInSameOrigin } from "../util/url-handler";
 
 import { invokeKeyclockAuthorizationEndpoint } from "../service/rest_api/keycloak-rest-service";
 import { KeycloakAuthrorizationResponse } from "../proxy/request_formats/response-format";
 
 import { InvalidURLException } from "../errors/custom_exceptions/invalid-url-exception";
 import { UnauthorizeAccessException } from "../errors/custom_exceptions/unauthorize-access-exception";
+import { RequestOriginNotFoundException } from "../errors/custom_exceptions/request-origin-not-found-exception";
 
 /**
  * this is for add the currentUser property to the request object
@@ -39,9 +40,26 @@ const keycloakAuthMiddleware = async (req: Request, res: Response, next: NextFun
     let keyTenant;
     let keyclockIdpServerUrl;
 
+    const origin = req.headers.origin as string;
+    const referUrl = req.headers.referer as string;
+    const secFetchSite = req.headers["sec-fetch-site"] as string;
+
+    console.debug(`origin: ${origin}, referUrl: ${referUrl}, secFetchSite: ${secFetchSite}`);
+
     try {
-        keyTenant = getTenantIdFromURL(req.headers.origin as string);
-        keyclockIdpServerUrl = getKeycloakIdpUrl(req.headers.origin as string);
+
+        let url = origin;
+
+        if (!origin) {
+            url = referUrl;
+
+            if (isInSameOrigin(url, secFetchSite, `${process.env.HOST as string}:${process.env.PORT as string}`)) {
+                return next(new UnauthorizeAccessException());
+            }
+
+        }
+        keyTenant = getTenantIdFromURL(url as string);
+        keyclockIdpServerUrl = getKeycloakIdpUrl(url as string);
     } catch (error) {
         return next(error);
     }
@@ -63,7 +81,7 @@ const keycloakAuthMiddleware = async (req: Request, res: Response, next: NextFun
     // if the authorization header is not defined, throw an error
     if (!authorization) {
         console.error("The authorization header must be defined in the request");
-        return next(new UnauthorizeAccessException());
+        return next(new RequestOriginNotFoundException());
     }
 
     // invoke the keycloak authorization endpoint 

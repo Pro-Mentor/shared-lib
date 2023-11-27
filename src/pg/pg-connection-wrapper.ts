@@ -51,5 +51,4 @@ class PgConnectionWrapper {
     };
 }
 
-// eslint-disable-next-line import/prefer-default-export
 export const pgConnectionWrapper = new PgConnectionWrapper();

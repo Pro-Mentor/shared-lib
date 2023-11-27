@@ -8,6 +8,9 @@ interface StudentCreate {
     lastName?: string;
     contactNumber?: string;
     personalEmail?: string;
+    studentClass?: string[];
+    degreeProgram?: string[];
+    school?: string[];
 }
 
 export { StudentCreate };

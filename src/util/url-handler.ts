@@ -87,4 +87,16 @@ const getKeycloakIdpUrl = (url: string): string => {
     }
 };
 
-export { getTenantIdFromURL, getKeycloakIdpUrl };
+/**
+ * this is a check the request is in the same origin or not
+ * @param host host url of the request
+ * @param secFetchSite sec-fetch-site header of the request
+ * @param applicationHost application host url
+ * @returns the request is in the same origin or not
+ */
+const isInSameOrigin = (host: string, secFetchSite: string, applicationHost: string): boolean => {
+    const [, domainUrl] = host.split("://");
+    return (secFetchSite != null && secFetchSite !== "same-origin") || (domainUrl === applicationHost);
+}
+
+export { getTenantIdFromURL, getKeycloakIdpUrl, isInSameOrigin };

@@ -30,6 +30,8 @@ export * from "./errors/custom_exceptions/email-not-verified";
 export * from "./errors/custom_exceptions/requrest-validation-error";
 export * from "./errors/custom_exceptions/custom-exception";
 export * from "./errors/custom_exceptions/group-not-found-exception";
+export * from "./errors/custom_exceptions/tenant-not-found-exception";
+export * from "./errors/custom_exceptions/request-origin-not-found-exception";
 
 /**
  * util
