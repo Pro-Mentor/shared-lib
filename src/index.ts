@@ -62,7 +62,8 @@ export * from "./events/Subjects";
 export * from "./events/base-event";
 export * from "./events/base-listener";
 
-export * from "./events/app-events/user-tempary-password-created-event.ts";
+export * from "./events/app-events/user-tempary-password-created-event";
+export * from "./events/app-events/user-created-envnt";
 
 /**
  * types
