@@ -1,6 +1,6 @@
 {
     "name": "@promentor-app/shared-lib",
-    "version": "1.0.28",
+    "version": "1.0.29",
     "description": "shared library for the application",
     "main": "./build/index.js",
     "types": "./build/index.d.ts",
