@@ -33,6 +33,7 @@ export * from "./errors/custom_exceptions/group-not-found-exception";
 export * from "./errors/custom_exceptions/tenant-not-found-exception";
 export * from "./errors/custom_exceptions/request-origin-not-found-exception";
 export * from "./errors/custom_exceptions/image-path-not-found";
+export * from "./errors/custom_exceptions/invalid-array-exception";
 
 /**
  * util
