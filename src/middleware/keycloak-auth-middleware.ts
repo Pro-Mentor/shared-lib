@@ -55,13 +55,16 @@ const keycloakAuthMiddleware = async (req: Request, res: Response, next: NextFun
         if (!origin) {
             url = referUrl;
 
-            if (isInSameOrigin(url, secFetchSite, `${process.env.HOST as string}:${process.env.PORT as string}`)) {
+            if (!isInSameOrigin(url, secFetchSite, `${process.env.HOST as string}:${process.env.PORT as string}`)) {
                 return next(new UnauthorizeAccessException());
             }
 
+            keyTenant = "sltc";
+            keyclockIdpServerUrl = "https://pro-mentor.live/";
+        } else {
+            keyTenant = getTenantIdFromURL(url as string);
+            keyclockIdpServerUrl = getKeycloakIdpUrl(url as string);
         }
-        keyTenant = getTenantIdFromURL(url as string);
-        keyclockIdpServerUrl = getKeycloakIdpUrl(url as string);
     } catch (error) {
         return next(error);
     }
