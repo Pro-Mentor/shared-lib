@@ -46,13 +46,13 @@ const keycloakAuthMiddleware = async (req: Request, res: Response, next: NextFun
     const referUrl = req.headers.referer as string;
     const secFetchSite = req.headers["sec-fetch-site"] as string;
 
-    console.debug(`origin: ${origin}, referUrl: ${referUrl}, secFetchSite: ${secFetchSite}`);
+    console.log(`origin: ${origin}, referUrl: ${referUrl}, secFetchSite: ${secFetchSite}`);
 
     try {
 
         let url = origin;
 
-        if (origin === "https://pro-mentor.live") {
+        if (origin.includes("pro-mentor.live") || referUrl.includes("pro-mentor.live")) {
             keyTenant = "sltc";
             keyclockIdpServerUrl = "https://pro-mentor.live"
         } else {
