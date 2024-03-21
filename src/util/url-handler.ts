@@ -16,6 +16,10 @@ import { InvalidURLException } from "../errors/custom_exceptions/invalid-url-exc
 const getTenantIdFromURL = (url: string): string => {
     console.debug("reserved url: ", url);
 
+    if (url.includes("pro-mentor.live")) {
+        return "sltc";
+    }
+
     try {
         /*
          * separate the protocol and domain name from the url
@@ -51,6 +55,10 @@ const getTenantIdFromURL = (url: string): string => {
  */
 const getKeycloakIdpUrl = (url: string): string => {
     console.debug("reserved url: ", url);
+
+    if (url.includes("pro-mentor.live")) {
+        return "https://pro-mentor.live";
+    }
 
     try {
         /*
