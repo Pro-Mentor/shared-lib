@@ -54,7 +54,7 @@ const keycloakAuthMiddleware = async (req: Request, res: Response, next: NextFun
 
         if (origin.includes("pro-mentor.live") || referUrl.includes("pro-mentor.live")) {
             keyTenant = "sltc";
-            keyclockIdpServerUrl = "https://pro-mentor.live"
+            keyclockIdpServerUrl = "http://keycloak-service:443"
         } else {
             // eslint-disable-next-line no-lonely-if
             if (!origin) {
@@ -65,7 +65,7 @@ const keycloakAuthMiddleware = async (req: Request, res: Response, next: NextFun
                 }
     
                 keyTenant = "sltc";
-                keyclockIdpServerUrl = "https://pro-mentor.live";
+                keyclockIdpServerUrl = "http://keycloak-service:443";
             } else {
                 keyTenant = getTenantIdFromURL(url as string);
                 keyclockIdpServerUrl = getKeycloakIdpUrl(url as string);
