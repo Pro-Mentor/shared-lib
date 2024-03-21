@@ -57,7 +57,7 @@ const getKeycloakIdpUrl = (url: string): string => {
     console.debug("reserved url: ", url);
 
     if (url.includes("pro-mentor.live")) {
-        return "https://pro-mentor.live";
+        return "keycloak-service:443";
     }
 
     try {
