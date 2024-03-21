@@ -52,18 +52,24 @@ const keycloakAuthMiddleware = async (req: Request, res: Response, next: NextFun
 
         let url = origin;
 
-        if (!origin) {
-            url = referUrl;
-
-            if (!isInSameOrigin(url, secFetchSite, `${process.env.HOST as string}:${process.env.PORT as string}`)) {
-                return next(new UnauthorizeAccessException());
-            }
-
+        if (origin === "https://pro-mentor.live") {
             keyTenant = "sltc";
-            keyclockIdpServerUrl = "https://pro-mentor.live";
+            keyclockIdpServerUrl = "https://pro-mentor.live"
         } else {
-            keyTenant = getTenantIdFromURL(url as string);
-            keyclockIdpServerUrl = getKeycloakIdpUrl(url as string);
+            // eslint-disable-next-line no-lonely-if
+            if (!origin) {
+                url = referUrl;
+    
+                if (!isInSameOrigin(url, secFetchSite, `${process.env.HOST as string}:${process.env.PORT as string}`)) {
+                    return next(new UnauthorizeAccessException());
+                }
+    
+                keyTenant = "sltc";
+                keyclockIdpServerUrl = "https://pro-mentor.live";
+            } else {
+                keyTenant = getTenantIdFromURL(url as string);
+                keyclockIdpServerUrl = getKeycloakIdpUrl(url as string);
+            }
         }
     } catch (error) {
         return next(error);
