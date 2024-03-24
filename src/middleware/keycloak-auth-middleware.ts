@@ -52,8 +52,8 @@ const keycloakAuthMiddleware = async (req: Request, res: Response, next: NextFun
 
         let url = origin;
 
-        if (origin.includes("pro-mentor.live") || referUrl.includes("pro-mentor.live") 
-            || origin.includes("sltc-promentor") || referUrl.includes("sltc-promentor")) {
+        if ((origin && origin.includes("pro-mentor.live")) || (referUrl && referUrl.includes("pro-mentor.live") )
+            || (origin && origin.includes("sltc-promentor")) || (referUrl && referUrl.includes("sltc-promentor"))) {
             keyTenant = "sltc";
             keyclockIdpServerUrl = "http://keycloak-service:443"
         } else {
